@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::controller(DashboardController::class)->group(function (){
-    Route::get('/','index');
-});
+Route::get('/',DashboardController::class)->name('dashboard');
+Route::resource('product',ProductController::class);
+
 Auth::routes(['register' => False]);
