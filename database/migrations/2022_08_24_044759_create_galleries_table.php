@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('galleries', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('products_id');
+            $table->foreignId('product_id');
             $table->string('photo');
             $table->boolean('is_default');
             $table->softDeletes();

@@ -2,9 +2,9 @@
     <div class="top-left">
         <div class="navbar-header">
             <a class="navbar-brand" href="./">
-                <img src="images/logo.png" alt="Logo"></a>
+                <img src="{{ asset('images/logo.png') }}" alt="Logo"></a>
                 <a class="navbar-brand hidden" href="./">
-                    <img src="images/logo2.png" alt="Logo"></a>
+                    <img src="{{ asset('images/logo2.png') }}" alt="Logo"></a>
                     <a id="menuToggle" class="menutoggle">
                         <i class="fa fa-bars"></i>
                     </a>
@@ -22,7 +22,7 @@
                             aria-expanded="false">
                             <img
                                 class="user-avatar rounded-circle"
-                                src="images/admin.jpg"
+                                src="{{ asset('images/admin.jpg') }}"
                                 alt="User Avatar"></a>
 
                             <div class="user-menu dropdown-menu">

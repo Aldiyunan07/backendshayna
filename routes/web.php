@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductGalleryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,5 +17,6 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/',DashboardController::class)->name('dashboard');
 Route::resource('product',ProductController::class);
-
+Route::resource('productgallery',ProductGalleryController::class);
+Route::get('product/{id}/gallery',[ProductGalleryController::class, 'gallery']);
 Auth::routes(['register' => False]);

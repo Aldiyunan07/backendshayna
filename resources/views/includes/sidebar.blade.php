@@ -21,11 +21,11 @@
                 <li class="menu-title">Foto Barang</li>
                 <!-- /.menu-title -->
                 <li class="">
-                    <a href="#">
+                    <a href="/productgallery">
                         <i class="menu-icon fa fa-list"></i>Lihat Foto Barang</a>
                 </li>
                 <li class="">
-                    <a href="#">
+                    <a href="/productgallery/create">
                         <i class="menu-icon fa fa-plus"></i>Tambah Foto Barang</a>
                 </li>
 

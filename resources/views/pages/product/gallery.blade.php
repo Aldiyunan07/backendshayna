@@ -5,7 +5,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="box-title">Daftar Barang</div>
+                        <div class="box-title">Daftar Foto Barang "{{ $product->name }}"</div>
                     </div>
                     <div class="card-body--">
                         <div class="table-stats order-table ov-h">
@@ -13,10 +13,9 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Nama</th>
-                                        <th>Type</th>
-                                        <th>Price</th>
-                                        <th>Quantity</th>
+                                        <th>Nama Barang</th>
+                                        <th>Foto</th>
+                                        <th>Default</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -24,18 +23,15 @@
                                     @forelse($items as $i)
                                     <tr>
                                         <td>{{ $i->id  }}</td>
-                                        <td>{{ $i->name }}</td>
-                                        <td>{{ $i->type }}</td>
-                                        <td>{{ $i->price }}</td>
-                                        <td>{{ $i->quantity }}</td>
+                                        <td>{{ $i->product->name }}</td>
                                         <td>
-                                        <a href="product/{{ $i->id }}/gallery" class="btn btn-info btn-sm">
-                                                <i class="fa fa-picture-o"></i>
-                                            </a>
-                                            <a href="/product/{{ $i->id }}/edit" class="btn btn-primary btn-sm">
-                                                <i class="fa fa-pencil"></i>
-                                            </a>
-                                            <form action="/product/{{ $i->id }}" method="post" class="d-inline">
+                                            <img src="{{ url($i->photo) }}" alt="">
+                                        </td>
+                                        <td>
+                                            {{ $i->is_default ? 'Ya' : 'Tidak' }}
+                                        </td>
+                                        <td>
+                                            <form action="/productgallery/{{ $i->id }}" method="post" class="d-inline">
                                                 @method('delete')
                                                 @csrf
                                                 <button type="submit" class="btn btn-sm btn-danger">
