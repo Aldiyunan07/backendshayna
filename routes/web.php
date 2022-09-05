@@ -20,6 +20,6 @@ Route::get('/',DashboardController::class)->name('dashboard');
 Route::resource('product',ProductController::class);
 Route::resource('productgallery',ProductGalleryController::class);
 Route::resource('transaction',TransactionController::class);
-Route::get('transaction/{id}/status', [TransactionController::class,'status']);
+Route::get('transaction/{id}/set-status', [TransactionController::class,'setStatus'])->name('transaction.status');
 Route::get('product/{id}/gallery',[ProductGalleryController::class, 'gallery']);
 Auth::routes(['register' => False]);

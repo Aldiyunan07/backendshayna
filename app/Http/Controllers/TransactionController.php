@@ -100,8 +100,23 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    public function setStatus(Request $request, $id){
+        $request->validate([
+            'status' => 'required|in:PENDING,SUCCESS,FAILED'
+        ]);
+
+        $item = Transaction::findOrFail($id);
+        $item->transaction_status = $request->status;
+
+        $item->save();
+        return redirect('/transaction');
+    } 
+
     public function destroy($id)
     {
-        //
+        $item = Transaction::findOrFail($id);
+        $item->delete();
+        return redirect('/transaction');
     }
 }

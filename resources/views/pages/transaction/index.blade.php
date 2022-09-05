@@ -45,8 +45,12 @@
                                                 </span>
                                         </td>
                                         <td>
-                                        <a class="btn btn-sm btn-success" href="transaction/{{ $i->id }}/edit" > <i class="fa fa-pencil"></i> </a>
-                                        <a
+                                            @if($i->transaction_status == 'PENDING')
+                                                <a href="{{ route('transaction.status', $i->id) }}?status=SUCCESS" class="btn btn-success btn-sm" > <i class="fa fa-check"></i> </a>
+                                                <a href="{{ route('transaction.status', $i->id) }}?status=FAILED" class="btn btn-warning btn-sm" > <i class="fa fa-times"></i> </a>
+                                            @endif
+                                            <a class="btn btn-sm btn-success" href="transaction/{{ $i->id }}/edit" > <i class="fa fa-pencil"></i> </a>
+                                            <a
                                             href="#mymodal"
                                             data-remote="/transaction/{{ $i->id }}"
                                             data-toggle="modal"
