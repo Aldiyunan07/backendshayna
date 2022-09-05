@@ -12,7 +12,14 @@ class Product extends Model
 
     use SoftDeletes;
     use HasFactory;
-    protected $guarded;
+    protected $fillable = [
+        'id',
+        'name',
+        'type',
+        'description',
+        'price',
+        'quantity'
+    ];
 
 
     public function gallery()
@@ -23,6 +30,14 @@ class Product extends Model
     public function detail()
     {
         return $this->hasMany(Detail::class);
+    }
+
+    public function transaction(){
+        return $this->hasMany(Transaction::class);
+    }
+
+    function rupiah($value){
+        return "Rp " . number_format($value,2,",",".");
     }
 }
 

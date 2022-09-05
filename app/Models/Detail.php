@@ -15,11 +15,11 @@ class Detail extends Model
 
     public function product()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class, 'products_id','id');
     }
 
     public function Transaction()
     {
-        return $this->belongTo(Transaction::class);
+        return $this->belongTo(Transaction::class ,'transaction_id','id');
     }
 }

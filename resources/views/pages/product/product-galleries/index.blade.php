@@ -20,9 +20,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {{ $no = 1; }}
                                     @forelse($items as $i)
                                     <tr>
-                                        <td>{{ $i->id  }}</td>
+                                        <td>{{ $no++  }}</td>
                                         <td>{{ $i->product->name }}</td>
                                         <td>
                                             <img src="{{ url($i->photo) }}" alt="">

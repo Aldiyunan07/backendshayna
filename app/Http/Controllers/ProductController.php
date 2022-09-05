@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 class ProductController extends Controller
@@ -98,6 +99,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $item = Product::findOrFail($id);
+        Gallery::where('product_id', $id)->delete();
         $item->delete();
         return redirect('/product');
     }

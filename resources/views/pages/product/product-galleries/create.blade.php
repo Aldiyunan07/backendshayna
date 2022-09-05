@@ -29,10 +29,14 @@
                     </div>
                 @enderror
             </div>
-            <div class="form-group">
-                <label for="is_default" class="form-control-label">Jadikan Default</label>
-                <br/>  
-                <label>
+            <div class="form-group mb-2">
+                <!-- <label for="is_default" class="form-control-label">Jadikan Default</label> -->
+                <!-- <br/>   -->
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="check" id="inlineCheckbox1" value="1">
+                    <label class="form-check-label" for="inlineCheckbox1">Jadikan Default </label>
+                </div>
+                <!-- <label>
                     <input type="radio" name="is_default" value="1"  class="form-control @error('is_default') is-invalid @enderror">
                 Ya
                 </label>
@@ -40,7 +44,7 @@
                 <label>
                     <input type="radio" name="is_default" value="0"  class="form-control @error('is_default') is-invalid @enderror">
                 Tidak
-                </label>
+                </label> -->
                 @error('is_default')
                     <div class="text-muted">
                         {{ $message }}

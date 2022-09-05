@@ -1,35 +1,29 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Http\Requests\ProductGalleryRequest;
 use App\Models\Product;
 use App\Models\Gallery;
-use App\Models\ProductGallery;
+use App\Models\Detail;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
-class ProductGalleryController extends Controller
+class TransactionController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    public function index()
+     public function index()
     {
-        
-        $items = Gallery::with('Product')->get();
-        // return dd($items);
-        
-        return view('pages/product/product-galleries/index')->with([
-            'items' => $items
-        ]);
+        $item = Transaction::all();
+        return view('pages/transaction/index',compact('item'));
+
     }
 
     /**
@@ -39,9 +33,7 @@ class ProductGalleryController extends Controller
      */
     public function create()
     {
-        $products = Product::all();
-
-        return view('pages/product/product-galleries/create',compact('products'));
+        //
     }
 
     /**
@@ -52,14 +44,7 @@ class ProductGalleryController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $data['is_default'] = $request->is_default ? '1' : '0';
-        $data['photo'] = $request->file('photo')->store(
-            'assets/product' , 'public'
-        );
-
-        Gallery::create($data);
-        return redirect('/productgallery');
+        //
     }
 
     /**
@@ -70,7 +55,11 @@ class ProductGalleryController extends Controller
      */
     public function show($id)
     {
-        //
+        $items = Transaction::with('detail.product')->findOrFail($id);
+        // return response()->json($items);
+        return view ('pages/transaction/show')->with([
+            'items' => $items
+        ]);
     }
 
     /**
@@ -79,9 +68,15 @@ class ProductGalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     public function status($id){
+
+     }
+
     public function edit($id)
     {
-        //
+        $item = Transaction::findOrFail($id);
+        return view('pages/transaction/edit',compact('item'));
     }
 
     /**
@@ -93,7 +88,10 @@ class ProductGalleryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $item = Transaction::findOrFail($id);
+        $item->update($data);
+        return redirect('/transaction');
     }
 
     /**
@@ -104,21 +102,6 @@ class ProductGalleryController extends Controller
      */
     public function destroy($id)
     {
-        $item = Gallery::findOrFail($id);
-        $item->delete();
-        
-        return redirect('/productgallery');
-    }
-
-    public function gallery(Request $request, $id){
-        $product = Product::findOrFail($id);
-        $items   = Gallery::with('product')
-                   ->where('product_id', $id)
-                   ->get();
-        return view('pages/product/gallery')->with([
-            'product' => $product,
-            'items'   => $items
-        ]);
-        
+        //
     }
 }

@@ -32,7 +32,7 @@
                 <li class="menu-title">Transaksi</li>
                 <!-- /.menu-title -->
                 <li class="">
-                    <a href="#">
+                    <a href="/transaction">
                         <i class="menu-icon fa fa-list"></i>Lihat Transaksi</a>
                 </li>
             </ul>

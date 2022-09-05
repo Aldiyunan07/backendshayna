@@ -21,12 +21,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {{ $no = 1; }}
                                     @forelse($items as $i)
                                     <tr>
-                                        <td>{{ $i->id  }}</td>
+                                        <td>{{ $no++  }}</td>
                                         <td>{{ $i->name }}</td>
                                         <td>{{ $i->type }}</td>
-                                        <td>{{ $i->price }}</td>
+                                        <td>{{ $i->rupiah($i->price) }}</td>
                                         <td>{{ $i->quantity }}</td>
                                         <td>
                                         <a href="product/{{ $i->id }}/gallery" class="btn btn-info btn-sm">

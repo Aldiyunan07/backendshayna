@@ -17,4 +17,12 @@ class Transaction extends Model
     {
         return $this->hasMany(Detail::class);
     }
+
+    public function product(){
+        return $this->belongsTo(Product::class);
+    }
+
+    function rupiah($value){
+        return "Rp " . number_format($value,2,",",".");
+    }
 }

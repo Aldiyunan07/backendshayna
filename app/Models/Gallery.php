@@ -10,7 +10,12 @@ class Gallery extends Model
 {
     use SoftDeletes;
     use HasFactory;
-    protected $guarded ;
+    protected $fillable = [
+        'id',
+        'product_id',
+        'photo',
+        'is_default'
+    ];
 
     public function product()
     {
