@@ -46,7 +46,7 @@ class ProductController extends Controller
     {
         $data = $request->all();
         $data['slug'] = Str::slug($request->name);
-        
+        // return dd($data['slug']);
         Product::create($data);
         return redirect('/product');
     }
